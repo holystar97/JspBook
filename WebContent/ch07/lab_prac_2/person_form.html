@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PERSON_FORM</title>
+</head>
+<body>
+<div align="center">
+<form name="form1" method="post" action="person_result.jsp">
+<table border="1" cellspacing="1" cellpadding="25">
+<tr>
+JSP FORM 처리
+</tr>
+<tr>
+<td>
+	이름 : <input type="text" size="15" name="name"><br>
+	암호 : <input type="password" size="15" name="password">
+
+</td>
+
+<td>
+	성별 <br>
+	<input type="radio" name="gender" value="남자">남자
+	<input type="radio" name="gender" value="여자">여자
+	<br><br>
+	좋아하는 스포츠는? <br>
+	<input type="checkbox" name="sport" value="야구">야구</input><br>
+	<input type="checkbox" name="sport" value="축구">축구</input><br>
+	<input type="checkbox" name="sport" value="농구">농구</input><br>
+	<input type="checkbox" name="sport" value="배구">배구</input><br>
+</td>
+</tr>
+
+<tr>
+	<td>
+	좋아하는 과일은 ? <br>
+	
+	<select name="fruit"  multiple>
+		<option>바나나</option>
+		<option>사과</option>
+		<option>포도</option>
+		<option>복숭아</option>
+	</select>
+	
+	<br>
+	
+	좋아하는 음악은 ? <br>
+	
+	<select name="music">
+		<option selected>팝송</option>
+		<option>R&B</option>
+		<option>클래식</option>
+		<option>가요</option>
+	</select>
+	
+	
+	</td>
+	
+	<td>
+	기타 제안 사항 <br>
+	
+	<textarea name="comment" rows="10" cols="20">없음</textarea>	
+	</td>
+	
+</tr>
+
+<tr>
+	<td>
+	<input type="submit" value="전송"/>
+	<input type="reset" value="취소"/>
+	</td>
+</tr>
+
+
+</table>
+</form>
+</div>
+</body>
+</html>
