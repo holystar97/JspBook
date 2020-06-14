@@ -1,9 +1,11 @@
-<%@page import="jspbook.member.Member"%>
+<%@page import=jspbook.addrbook.AddrBook"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="addrbook_error.jsp" import="jspbook.addrbook.*"%>
     
-<%request.setCharacterEncoding("UTF-8"); %>
+<%
+    	request.setCharacterEncoding("UTF-8");
+    %>
 
 <jsp:useBean id="ab" scope="page" class="jspbook.addrbook.AddrBean"/>
 <jsp:useBean id="addrbook" class="jspbook.addrbook.AddrBook"/>
@@ -41,8 +43,11 @@
 	// forward로 edit_form.jsp로 이동 
 	else if (action.equals("edit")){
 		AddrBook abook=ab.getDB(addrbook.getAb_id());
-		if(!(request.getParameter("upasswd").equals("1234"))){
-			out.println("<script> alert('비밀번호가 틀렸습니다.!!'); history.go(-1);</script>");
+		String cur_passwd = (String) session.getAttribute("cur_passwd");
+		String cur_id	  = (String) session.getAttribute("cur_id");
+		
+		if(!(cur_passwd.equals("hansung") && cur_id.equals("admin"))){
+			out.println("<script> alert('관리자권한이 필요합니다..!!'); history.go(-1);</script>");
 		}else{
 			request.setAttribute("ab",abook);
 			pageContext.forward("addrbook_edit_form.jsp");
@@ -82,6 +87,8 @@
 
 	else if (action.equals("logincheck")){
 		if(mb.checkMember(member.getM_id(),member.getM_pw())) {
+			session.setAttribute("cur_id", member.getM_id());
+			session.setAttribute("cur_passwd",member.getM_pw());
 			response.sendRedirect("addrbook_control.jsp?action=list");
 		} else {
 			out.println("<script> alert('회원정보가 일치하지 않습니다!'); document.location.href='addrbook_control.jsp?action=login'; </script>");

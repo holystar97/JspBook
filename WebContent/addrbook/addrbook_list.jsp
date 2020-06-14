@@ -64,7 +64,7 @@
 
 <script language="JavaScript">
 	function check(ab_id){
-		pwd=prompt("수정/삭제 하려면 비밀번호를 넣으세요");
+		pwd=prompt("수정/삭제 하려면 비밀번호를 넣으세요");	
 		document.location.href="addrbook_control.jsp?action=edit&ab_id="+ab_id+"&upasswd="+pwd;
 	}
 </script>
